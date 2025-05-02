@@ -13,8 +13,8 @@ const wsServer = new webSocketServer({
     maxPayload: 100 * 1024 * 1024  // 100MB limit
 })
 
-server.listen(process.env.PORT || 5002, () => {
-    log(`Server is listening on port ${process.env.PORT}`)
+server.listen(5002, () => {
+    log("Server is listening on port 5002")
 })
 
 
