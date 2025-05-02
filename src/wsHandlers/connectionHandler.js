@@ -11,7 +11,6 @@ export function handleConnection(ws, wsServer) {
   log(`New client connected with ID: ${clientId}`)
 
   ws.send(JSON.stringify({ type: "clientId", clientId }))
-
   ws.on("message", (message) => {
     handleMessage(ws, wsServer, message, clientId)
   })

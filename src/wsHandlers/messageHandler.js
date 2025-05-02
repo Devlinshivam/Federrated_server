@@ -14,13 +14,12 @@ export function handleMessage(ws, wsServer, message, clientId) {
       const { parameters } = data
       parametersFromClients.set(clientId, parameters)
       log(`Received parameters from client: ${clientId}`)
-
-      if (parametersFromClients.size === 2) {
+      if (parametersFromClients.size === 5) {
         log('All clients have sent parameters. Aggregating...')
-
-        const aggregatedParameters = aggregateParameters([...parametersFromClients.values()])
+        
+        const aggregatedParameters = aggregateParameters(parametersFromClients,parameters)
         log('Broadcasting aggregated parameters to all clients...')
-        broadcastParameters(wsServer, aggregatedParameters)
+        broadcastParameters(wsServer,aggregatedParameters)
 
         parametersFromClients.clear()
       }
